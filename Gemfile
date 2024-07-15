@@ -50,3 +50,5 @@ group :development do
   gem "byebug", "~> 11.1"
   gem "letter_opener_web", "~> 2.0"
 end
+
+gem "interactor-rails", "~> 2.2"
