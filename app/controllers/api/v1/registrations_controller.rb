@@ -3,7 +3,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
 
   # Sign up
   def create
-    result = CreateUser.call(user_params)
+    result = SignUpUser.call(user_params)
     return render status: :unprocessable_entity, json: result.error unless result.success?
     json_response "Signed Up Succesfully", true, { user: result.user }, :ok
   end
