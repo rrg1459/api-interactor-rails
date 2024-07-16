@@ -8,15 +8,15 @@ class CreateUser
   end
 
   def call
-    user = User.create(
-      email: context[:email],
-      password: context[:password],
-      password_confirmation: context[:password_confirmation],
-      name: context[:name],
-      borned_at: context[:borned_at]
-    )
+    user = User.create(user_context)
     context.fail!(error: Constants::USER_INVALID) unless user.valid?
     context.user = user
   end
+
+  private
+
+    def user_context
+      context.to_h.slice(:email, :password, :password_confirmation, :name, :borned_at)
+    end
 
 end
