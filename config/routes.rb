@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       devise_scope :user do
+        post "campaign_sign_up", to: "campaigns#create"
         post "sign_up", to: "registrations#create"
         post "sign_in", to: "sessions#create"
         post "log_out", to: "sessions#destroy"
