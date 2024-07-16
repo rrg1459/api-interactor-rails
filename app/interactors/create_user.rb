@@ -7,10 +7,6 @@ class CreateUser
     context.fail!(error: Constants::AGE_ERROR) if Time.now.year - context[:borned_at][0..3].to_i < 18
   end
 
-  after do
-    UserMailer.welcome_mail(context.user).deliver_now
-  end
-
   def call
     user = User.create(
       email: context[:email],
